@@ -1,0 +1,141 @@
+public class LevelProgress {
+    // Easy levels
+    private static boolean easyLevel1Complete = false;
+    private static boolean easyLevel2Complete = false;
+    private static boolean easyLevel3Complete = false;
+    private static boolean easyLevel4Complete = false;
+    private static boolean easyLevel5Complete = false;
+    
+    // Medium levels
+    private static boolean mediumLevel1Complete = false;
+    private static boolean mediumLevel2Complete = false;
+    private static boolean mediumLevel3Complete = false;
+    private static boolean mediumLevel4Complete = false;
+    private static boolean mediumLevel5Complete = false;
+    
+    // Hard levels
+    private static boolean hardLevel1Complete = false;
+    private static boolean hardLevel2Complete = false;
+    private static boolean hardLevel3Complete = false;
+    private static boolean hardLevel4Complete = false;
+    private static boolean hardLevel5Complete = false;
+    
+    // Advance levels
+    private static boolean advLevel1Complete = false;
+    private static boolean advLevel2Complete = false;
+    private static boolean advLevel3Complete = false;
+    private static boolean advLevel4Complete = false;
+    private static boolean advLevel5Complete = false;
+    
+    // Easy level methods
+    public static boolean isEasyLevelComplete(int level) {
+        switch(level) {
+            case 1: return easyLevel1Complete;
+            case 2: return easyLevel2Complete;
+            case 3: return easyLevel3Complete;
+            case 4: return easyLevel4Complete;
+            case 5: return easyLevel5Complete;
+            default: return false;
+        }
+    }
+    
+    public static void completeEasyLevel(int level) {
+        switch(level) {
+            case 1: easyLevel1Complete = true; break;
+            case 2: easyLevel2Complete = true; break;
+            case 3: easyLevel3Complete = true; break;
+            case 4: easyLevel4Complete = true; break;
+            case 5: easyLevel5Complete = true; break;
+        }
+    }
+    
+    // Medium level methods
+    public static boolean isMediumLevelComplete(int level) {
+        switch(level) {
+            case 1: return mediumLevel1Complete;
+            case 2: return mediumLevel2Complete;
+            case 3: return mediumLevel3Complete;
+            case 4: return mediumLevel4Complete;
+            case 5: return mediumLevel5Complete;
+            default: return false;
+        }
+    }
+    
+    public static void completeMediumLevel(int level) {
+        switch(level) {
+            case 1: mediumLevel1Complete = true; break;
+            case 2: mediumLevel2Complete = true; break;
+            case 3: mediumLevel3Complete = true; break;
+            case 4: mediumLevel4Complete = true; break;
+            case 5: mediumLevel5Complete = true; break;
+        }
+    }
+    
+    // Hard level methods
+    public static boolean isHardLevelComplete(int level) {
+        switch(level) {
+            case 1: return hardLevel1Complete;
+            case 2: return hardLevel2Complete;
+            case 3: return hardLevel3Complete;
+            case 4: return hardLevel4Complete;
+            case 5: return hardLevel5Complete;
+            default: return false;
+        }
+    }
+    
+    public static void completeHardLevel(int level) {
+        switch(level) {
+            case 1: hardLevel1Complete = true; break;
+            case 2: hardLevel2Complete = true; break;
+            case 3: hardLevel3Complete = true; break;
+            case 4: hardLevel4Complete = true; break;
+            case 5: hardLevel5Complete = true; break;
+        }
+    }
+    
+    // Advance level methods
+    public static boolean isAdvLevelComplete(int level) {
+        switch(level) {
+            case 1: return advLevel1Complete;
+            case 2: return advLevel2Complete;
+            case 3: return advLevel3Complete;
+            case 4: return advLevel4Complete;
+            case 5: return advLevel5Complete;
+            default: return false;
+        }
+    }
+    
+    public static void completeAdvLevel(int level) {
+        switch(level) {
+            case 1: advLevel1Complete = true; break;
+            case 2: advLevel2Complete = true; break;
+            case 3: advLevel3Complete = true; break;
+            case 4: advLevel4Complete = true; break;
+            case 5: advLevel5Complete = true; break;
+        }
+    }
+    
+    // Check if entire category is complete
+    public static boolean isEasyCategoryComplete() {
+        return easyLevel1Complete && easyLevel2Complete && easyLevel3Complete && 
+               easyLevel4Complete && easyLevel5Complete;
+    }
+    
+    public static boolean isMediumCategoryComplete() {
+        return mediumLevel1Complete && mediumLevel2Complete && mediumLevel3Complete && 
+               mediumLevel4Complete && mediumLevel5Complete;
+    }
+    
+    public static boolean isHardCategoryComplete() {
+        return hardLevel1Complete && hardLevel2Complete && hardLevel3Complete && 
+               hardLevel4Complete && hardLevel5Complete;
+    }
+    
+    // Reset all progress
+    public static void resetAllProgress() {
+        easyLevel1Complete = easyLevel2Complete = easyLevel3Complete = easyLevel4Complete = easyLevel5Complete = false;
+        mediumLevel1Complete = mediumLevel2Complete = mediumLevel3Complete = mediumLevel4Complete = mediumLevel5Complete = false;
+        hardLevel1Complete = hardLevel2Complete = hardLevel3Complete = hardLevel4Complete = hardLevel5Complete = false;
+        advLevel1Complete = advLevel2Complete = advLevel3Complete = advLevel4Complete = advLevel5Complete = false;
+    }
+}

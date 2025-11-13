@@ -1,0 +1,28 @@
+public class CharacterManager {
+    private static int selectedCharacter = 1; // 1 = Person, 2 = Person2, 3 = Person3
+    
+    public static int getSelectedCharacter() {
+        return selectedCharacter;
+    }
+    
+    public static void setSelectedCharacter(int character) {
+        selectedCharacter = character;
+    }
+    
+    public static boolean isPerson2Unlocked() {
+        return LevelProgress.isEasyCategoryComplete();
+    }
+    
+    public static boolean isPerson3Unlocked() {
+        return LevelProgress.isMediumCategoryComplete();
+    }
+    
+    public static String getCharacterName(int character) {
+        switch(character) {
+            case 1: return "Person";
+            case 2: return "Person 2";
+            case 3: return "Person 3";
+            default: return "Person";
+        }
+    }
+}

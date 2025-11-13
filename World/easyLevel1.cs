@@ -19,7 +19,7 @@ public class easyLevel1 extends World
         Platform p  = new Platform(615, 100);
         addObject(p, 307, 350);
         
-        // Add the selected character - CHANGED TO Actor TYPE
+        // ✅ FIXED: Add the selected character correctly
         Actor player;
         int selectedChar = CharacterManager.getSelectedCharacter();
         
@@ -43,32 +43,38 @@ public class easyLevel1 extends World
         Platform p2  = new Platform(140,100);
         addObject(p2, 730, 350);
         
-        // CHANGED FROM 3 TO 1
         easyPortal ePor = new easyPortal(1);
         addObject(ePor, 704, 270);
         
         pauseBtn pauseButton = new pauseBtn();
         addObject(pauseButton, 700, 30);
-        
-        
     }
     
     public void act() {
         handleSpikeSpawning();
     }
     
-    private void handleSpikeSpawning() {
-        // Get the player (check all character types)
-        java.util.List<Actor> players = new java.util.ArrayList<Actor>();
-        players.addAll(getObjects(Person.class));
-        players.addAll(getObjects(Person2.class));
-        players.addAll(getObjects(Person3.class));
+    // ✅ FIXED: Get player regardless of character type
+    private Actor getPlayer() {
+        java.util.List<Person> persons = getObjects(Person.class);
+        if (!persons.isEmpty()) return persons.get(0);
         
-        if (players.isEmpty()) {
+        java.util.List<Person2> persons2 = getObjects(Person2.class);
+        if (!persons2.isEmpty()) return persons2.get(0);
+        
+        java.util.List<Person3> persons3 = getObjects(Person3.class);
+        if (!persons3.isEmpty()) return persons3.get(0);
+        
+        return null;
+    }
+    
+    private void handleSpikeSpawning() {
+        Actor player = getPlayer();
+        
+        if (player == null) {
             return;
         }
         
-        Actor player = players.get(0);
         int playerX = player.getX();
         
         // First spike trigger

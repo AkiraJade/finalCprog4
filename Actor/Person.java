@@ -50,7 +50,7 @@ public class Person extends Actor
         checkSpikesAndTraps();
         checkShurikenCollision();
         checkFallOff();
-        // REMOVED: nextLevel() - now handled by easyPortal
+        nextLevel(); // ✅ RE-ADDED THIS LINE
         animate();
     }
 
@@ -226,6 +226,107 @@ public class Person extends Actor
         }
     }
 
+    // ✅ FIXED: Added complete nextLevel() method for Person
+    public void nextLevel() {
+        World w = getWorld();
+
+        // Easy levels
+        if (getOneIntersectingObject(easyPortal.class) != null) {
+            if (w instanceof easyLevel1) { 
+                LevelProgress.completeEasyLevel(1); 
+                Greenfoot.setWorld(new easyLevel2()); 
+            }
+            else if (w instanceof easyLevel2) { 
+                LevelProgress.completeEasyLevel(2); 
+                Greenfoot.setWorld(new easyLevel3()); 
+            }
+            else if (w instanceof easyLevel3) { 
+                LevelProgress.completeEasyLevel(3); 
+                Greenfoot.setWorld(new easyLevel4()); 
+            }
+            else if (w instanceof easyLevel4) { 
+                LevelProgress.completeEasyLevel(4); 
+                Greenfoot.setWorld(new easyLevel5()); 
+            }
+            else if (w instanceof easyLevel5) { 
+                LevelProgress.completeEasyLevel(5); 
+                Greenfoot.setWorld(new categoryEasy()); 
+            }
+        }
+
+        // Medium levels
+        else if (getOneIntersectingObject(mediumPortal.class) != null) {
+            if (w instanceof mediumLevel1) { 
+                LevelProgress.completeMediumLevel(1); 
+                Greenfoot.setWorld(new mediumLevel2()); 
+            }
+            else if (w instanceof mediumLevel2) { 
+                LevelProgress.completeMediumLevel(2); 
+                Greenfoot.setWorld(new mediumLevel3()); 
+            }
+            else if (w instanceof mediumLevel3) { 
+                LevelProgress.completeMediumLevel(3); 
+                Greenfoot.setWorld(new mediumLevel4()); 
+            }
+            else if (w instanceof mediumLevel4) { 
+                LevelProgress.completeMediumLevel(4); 
+                Greenfoot.setWorld(new mediumLevel5()); 
+            }
+            else if (w instanceof mediumLevel5) { 
+                LevelProgress.completeMediumLevel(5); 
+                Greenfoot.setWorld(new categoryMedium()); 
+            }
+        }
+
+        // Hard levels
+        else if (getOneIntersectingObject(hardPortal.class) != null) {
+            if (w instanceof ohardLevel1) { 
+                LevelProgress.completeHardLevel(1); 
+                Greenfoot.setWorld(new ohardLevel2()); 
+            }
+            else if (w instanceof ohardLevel2) { 
+                LevelProgress.completeHardLevel(2); 
+                Greenfoot.setWorld(new ohardLevel3()); 
+            }
+            else if (w instanceof ohardLevel3) { 
+                LevelProgress.completeHardLevel(3); 
+                Greenfoot.setWorld(new ohardLevel4()); 
+            }
+            else if (w instanceof ohardLevel4) { 
+                LevelProgress.completeHardLevel(4); 
+                Greenfoot.setWorld(new ohardLevel5()); 
+            }
+            else if (w instanceof ohardLevel5) { 
+                LevelProgress.completeHardLevel(5); 
+                Greenfoot.setWorld(new categoryHard()); 
+            }
+        }
+
+        // Advance levels
+        else if (getOneIntersectingObject(advPortal.class) != null) {
+            if (w instanceof pAdvLevel1) { 
+                LevelProgress.completeAdvLevel(1); 
+                Greenfoot.setWorld(new pAdvLevel2()); 
+            }
+            else if (w instanceof pAdvLevel2) { 
+                LevelProgress.completeAdvLevel(2); 
+                Greenfoot.setWorld(new pAdvLevel3()); 
+            }
+            else if (w instanceof pAdvLevel3) { 
+                LevelProgress.completeAdvLevel(3); 
+                Greenfoot.setWorld(new pAdvLevel4()); 
+            }
+            else if (w instanceof pAdvLevel4) { 
+                LevelProgress.completeAdvLevel(4); 
+                Greenfoot.setWorld(new pAdvLevel5()); 
+            }
+            else if (w instanceof pAdvLevel5) { 
+                LevelProgress.completeAdvLevel(5); 
+                Greenfoot.setWorld(new categoryAdvance()); 
+            }
+        }
+    }
+
     // Helper method to reset to current level
     private void resetToCurrentLevel() {
         World w = getWorld();
@@ -234,7 +335,21 @@ public class Person extends Actor
         else if(w instanceof easyLevel3){ Greenfoot.setWorld(new easyLevel3()); }
         else if(w instanceof easyLevel4){ Greenfoot.setWorld(new easyLevel4()); }
         else if(w instanceof easyLevel5){ Greenfoot.setWorld(new easyLevel5()); }
-        // Add other level types as needed
+        else if(w instanceof mediumLevel1){ Greenfoot.setWorld(new mediumLevel1()); }
+        else if(w instanceof mediumLevel2){ Greenfoot.setWorld(new mediumLevel2()); }
+        else if(w instanceof mediumLevel3){ Greenfoot.setWorld(new mediumLevel3()); }
+        else if(w instanceof mediumLevel4){ Greenfoot.setWorld(new mediumLevel4()); }
+        else if(w instanceof mediumLevel5){ Greenfoot.setWorld(new mediumLevel5()); }
+        else if(w instanceof ohardLevel1){ Greenfoot.setWorld(new ohardLevel1()); }
+        else if(w instanceof ohardLevel2){ Greenfoot.setWorld(new ohardLevel2()); }
+        else if(w instanceof ohardLevel3){ Greenfoot.setWorld(new ohardLevel3()); }
+        else if(w instanceof ohardLevel4){ Greenfoot.setWorld(new ohardLevel4()); }
+        else if(w instanceof ohardLevel5){ Greenfoot.setWorld(new ohardLevel5()); }
+        else if(w instanceof pAdvLevel1){ Greenfoot.setWorld(new pAdvLevel1()); }
+        else if(w instanceof pAdvLevel2){ Greenfoot.setWorld(new pAdvLevel2()); }
+        else if(w instanceof pAdvLevel3){ Greenfoot.setWorld(new pAdvLevel3()); }
+        else if(w instanceof pAdvLevel4){ Greenfoot.setWorld(new pAdvLevel4()); }
+        else if(w instanceof pAdvLevel5){ Greenfoot.setWorld(new pAdvLevel5()); }
     }
 
     private void animate(){
@@ -249,4 +364,4 @@ public class Person extends Actor
             setImage(img);
         }
     }
-}
+}   

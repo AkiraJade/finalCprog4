@@ -1,6 +1,6 @@
 import greenfoot.*;
 
-public class Person2 extends Actor
+public class Person2 extends Person
 {
     private GreenfootImage[] idleFrames;
     private GreenfootImage[] runFrames;
@@ -199,11 +199,35 @@ public class Person2 extends Actor
         World w = getWorld();
 
         if (getOneIntersectingObject(easyPortal.class) != null) {
-            if (w instanceof easyLevel1) Greenfoot.setWorld(new easyLevel2());
-            else if (w instanceof easyLevel2) Greenfoot.setWorld(new easyLevel3());
-            else if (w instanceof easyLevel3) Greenfoot.setWorld(new easyLevel4());
-            else if (w instanceof easyLevel4) Greenfoot.setWorld(new easyLevel5());
-            else if (w instanceof easyLevel5) Greenfoot.setWorld(new categoryEasy());
+            if (w instanceof easyLevel1) { LevelProgress.completeEasyLevel(1); Greenfoot.setWorld(new easyLevel2()); }
+            else if (w instanceof easyLevel2) { LevelProgress.completeEasyLevel(2); Greenfoot.setWorld(new easyLevel3()); }
+            else if (w instanceof easyLevel3) { LevelProgress.completeEasyLevel(3); Greenfoot.setWorld(new easyLevel4()); }
+            else if (w instanceof easyLevel4) { LevelProgress.completeEasyLevel(4); Greenfoot.setWorld(new easyLevel5()); }
+            else if (w instanceof easyLevel5) { LevelProgress.completeEasyLevel(5); Greenfoot.setWorld(new categoryEasy()); }
+        }
+
+        else if (getOneIntersectingObject(mediumPortal.class) != null) {
+            if (w instanceof mediumLevel1) { LevelProgress.completeMediumLevel(1); Greenfoot.setWorld(new mediumLevel2()); }
+            else if (w instanceof mediumLevel2) { LevelProgress.completeMediumLevel(2); Greenfoot.setWorld(new mediumLevel3()); }
+            else if (w instanceof mediumLevel3) { LevelProgress.completeMediumLevel(3); Greenfoot.setWorld(new mediumLevel4()); }
+            else if (w instanceof mediumLevel4) { LevelProgress.completeMediumLevel(4); Greenfoot.setWorld(new mediumLevel5()); }
+            else if (w instanceof mediumLevel5) { LevelProgress.completeMediumLevel(5); Greenfoot.setWorld(new categoryMedium()); }
+        }
+
+        else if (getOneIntersectingObject(hardPortal.class) != null) {
+            if (w instanceof ohardLevel1) { LevelProgress.completeHardLevel(1); Greenfoot.setWorld(new ohardLevel2()); }
+            else if (w instanceof ohardLevel2) { LevelProgress.completeHardLevel(2); Greenfoot.setWorld(new ohardLevel3()); }
+            else if (w instanceof ohardLevel3) { LevelProgress.completeHardLevel(3); Greenfoot.setWorld(new ohardLevel4()); }
+            else if (w instanceof ohardLevel4) { LevelProgress.completeHardLevel(4); Greenfoot.setWorld(new ohardLevel5()); }
+            else if (w instanceof ohardLevel5) { LevelProgress.completeHardLevel(5); Greenfoot.setWorld(new categoryHard()); }
+        }
+
+        else if (getOneIntersectingObject(advPortal.class) != null) {
+            if (w instanceof pAdvLevel1) { LevelProgress.completeAdvLevel(1); Greenfoot.setWorld(new pAdvLevel2()); }
+            else if (w instanceof pAdvLevel2) { LevelProgress.completeAdvLevel(2); Greenfoot.setWorld(new pAdvLevel3()); }
+            else if (w instanceof pAdvLevel3) { LevelProgress.completeAdvLevel(3); Greenfoot.setWorld(new pAdvLevel4()); }
+            else if (w instanceof pAdvLevel4) { LevelProgress.completeAdvLevel(4); Greenfoot.setWorld(new pAdvLevel5()); }
+            else if (w instanceof pAdvLevel5) { LevelProgress.completeAdvLevel(5); Greenfoot.setWorld(new categoryAdvance()); }
         }
     }
 

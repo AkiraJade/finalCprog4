@@ -1,6 +1,6 @@
 import greenfoot.*;
 
-public class Person3 extends Actor
+public class Person3 extends Person
 {
     // Animation variables
     private GreenfootImage[] idleFrames;
